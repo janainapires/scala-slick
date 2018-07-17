@@ -1,5 +1,24 @@
 name = Name
 age = Age
+user.created = You have successfully created a user!
 
-user.created = You have successfully created a user!\
+email.conteudo = Conteudo
+email.assunto = Assunto
+email.errormg = Mensagem de erro
+email.datacadastro = Data de cadastro
+email.dataenvio = Data Envio
+email.situacao = Situacao
+email.usuariointerno = Usuario Interno
+email.remetente = Remetente
+email.tramitavel = Tramitavel
+email.interessado = Interessado
+email.usuarioenvio = Usuario Envio
+email.email = Email
+email.evento = Evento
+email.codigorastreamento = Codigo Rastreamento
+email.dataleiturarastreamento = Data leitura rastreamento
+email.dadosrastreamento = Dados Rastreamento
+
 email.created = Email enviado com sucesso!
+
+

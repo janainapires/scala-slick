@@ -21,5 +21,4 @@ libraryDependencies += "org.webjars" % "bootstrap" % "4.1.1"
 
 
 
-
 libraryDependencies += specs2 % Test

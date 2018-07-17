@@ -5,10 +5,27 @@
 <html>
     <head>
         <title>@title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")"/>
-        <link href="@routes.Assets.versioned("lib/bootstrap/css/bootstrap.css")>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("lib/bootstrap/css/bootstrap.min.css")">
     </head>
     <body>
+        <header class="navbar navbar-primary">
+            <div class="container" role="presentation">
+
+                <ul class="nav navbar-nav  navbar-left">
+                    <li>
+                        <a href="@routes.PersonController.index">Nova Pessoa</a>
+                    </li>
+                    <li>
+                        <a href="@routes.EmailController.formularioEmail">Novo Email</a>
+                    </li>
+                </ul>
+
+            </div>
+        </header>
+        <main class="container">
         @content
+        </main>
     </body>
 </html>

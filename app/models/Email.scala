@@ -1,13 +1,12 @@
 package models
 
 import java.sql.Timestamp
-import java.time.LocalDateTime
 
 import enums.Remetente.Remetente
 import enums.Situacao.Situacao
 
 case class Email (id: Long,
-             cancelledstatus: Boolean,
+             cancelledstatus: Boolean = false,
              assunto: String,
              conteudo: String,
              errormg: String,
@@ -24,18 +23,6 @@ case class Email (id: Long,
              codigorastreamento: String,
              dataleiturarastreamento:  Option[Timestamp],
              dadosrastreamento: String ){
-
-//  def this(id: Long,
-//           cancelledstatus: Boolean,
-//           assunto: String,
-//           conteudo: String,
-//           errormg: String,
-//           datacadastro: Timestamp,
-//           dataenvio: Timestamp,
-//           situacao: Situacao)
-//         = this(id, false, assunto, conteudo, errormg, datacadastro, dataenvio, situacao,
-//          null, null, null, null, null, null, null, null, None, null)
-
 
 }
 

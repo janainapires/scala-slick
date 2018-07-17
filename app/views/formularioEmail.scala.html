@@ -1,0 +1,52 @@
+@import enums.Situacao
+@(email: Form[CreateEmailForm])(implicit request: MessagesRequestHeader)
+
+@import helper._
+
+@request.flash.get("success").map { key =>
+    @request.messages(key)
+}
+
+@main("Envio de Email") {
+    @form(routes.EmailController.addEmail()) {
+
+            @inputText(email("email.conteudo"))
+            @inputText(email("email.assunto"))
+            @inputText(email("email.errormg"))
+            @inputDate(email("email.datacadastro"))
+            @inputDate(email("email.dataenvio"))
+            @select(
+                field = email("email.situacao"),
+                options = Seq(
+                    "Situacao.PENDENTE" -> "Pendente",
+                    "Situacao.ENVIADO" -> "Enviado",
+                    "Situacao.ERRO" -> "Erro"
+                )
+            )
+            @inputText(email("email.usuariointerno"))
+            @select(
+                field = email("email.remetente"),
+                options = Seq(
+                    "Remetente.DIARIOOFICIAL" -> "Diário Oficial",
+                    "Remetente.TRAMITA" -> "Tramita",
+                    "Remetente.ACESSOAINFORMACAO" -> "Acesso a Informação"
+                )
+            )
+            @inputText(email("email.tramitavel"))
+            @inputText(email("email.interessado"))
+            @inputText(email("email.usuarioenvio"))
+            @inputText(email("email.email"))
+            @inputText(email("email.evento"))
+            @inputText(email("email.codigorastreamento"))
+            @inputDate(email("email.dataleiturarastreamento"))
+            @inputText(email("email.dadosrastreamento"))
+            @CSRF.formField
+
+
+
+
+        <div class="control-buttons-tab">
+            <input type="submit" value="Cadastrar Email"/>
+        </div>
+    }
+}

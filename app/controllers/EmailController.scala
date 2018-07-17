@@ -48,20 +48,20 @@ class EmailController @Inject()(repo: EmailRepository,
   }
 
 
-//  def formularioEmail = Action { implicit request =>
-//    Ok(views.html.formularioEmail(emailForm))
-//  }
+  def formularioEmail = Action { implicit request =>
+    Ok(views.html.formularioEmail(emailForm))
+ }
 
-//  def addEmail = Action.async { implicit request =>
-//    emailForm.bindFromRequest.fold(errorForm => {
-//        Future.successful(Ok(views.html.formularioEmail(errorForm)))
-//      },
-//      email => {repo.create(email.getEmail)
-//        //  Redirect(routes.EmailController.formularioEmail.flashing("success" -> "email.created")
-//        Future.successful(Ok(""))
-//      }
-//    )
-//  }
+  def addEmail = Action.async { implicit request =>
+    emailForm.bindFromRequest.fold(errorForm => {
+        Future.successful(Ok(views.html.formularioEmail(errorForm)))
+      },
+      email => {
+        repo.create(email.getEmail)
+        Future.successful(Redirect(routes.EmailController.formularioEmail).flashing("success" -> "email.created"))
+      }
+    )
+  }
 
 //  def getEmails = Action.async { implicit request =>
 //     repo.list().map { email =>
@@ -89,7 +89,7 @@ case class CreateEmailForm(id: Long,
                            dataleiturarastreamento: Option[Timestamp],
                            dadosrastreamento: String) {
   def getEmail: Email = {
-    new Email(id, cancelledstatus, assunto, conteudo, errormg, datacadastro, dataenvio, Situacao(situacao), usuariointerno, Remetente(remetente), tramitavel, interessado, usuarioenvio, email, evento,
+     Email (id, cancelledstatus, assunto, conteudo, errormg, datacadastro, dataenvio, Situacao(situacao), usuariointerno, Remetente(remetente), tramitavel, interessado, usuarioenvio, email, evento,
       codigorastreamento, dataleiturarastreamento, dadosrastreamento)
   }
 }
