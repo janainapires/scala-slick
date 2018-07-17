@@ -66,8 +66,14 @@ class EmailRepository @Inject()(protected val dbConfigProvider: DatabaseConfigPr
 
   }
 
+
   def create(email: Email): Unit = db.run {
-    DBIO.seq(tableEmail +=(email))
+    (tableEmail.map(e => (e.cancelledstatus, e.assunto, e.conteudo, e.errormsg, e.datacadastro, e.dataenvio, e.situacao, e.usuariointerno, e.remetente, e.tramitavel, e.interessado,
+                           e.usuarioenvio, e.email, e.evento, e.codigorastreamento, e.dataleiturarastreamento, e.dadosrastreamento))
+      returning tableEmail.map(_.id)
+      into ((fields, id) => Email(id, fields._1, fields._2, fields._3, fields._4, fields._5, fields._6, fields._7, fields._8, fields._9, fields._10, fields._11, fields._12, fields._13, fields._14, fields._15, fields._16, fields._17))
+      ) += (email.cancelledstatus, email.assunto, email.conteudo, email.errormg, email.datacadastro, email.dataenvio, email.situacao, email.usuariointerno,
+              email.remetente, email.tramitavel, email.interessado, email.usuarioenvio, email.email, email.evento, email.codigorastreamento, email.dataleiturarastreamento, email.dadosrastreamento )
   }
 
 

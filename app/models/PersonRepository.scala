@@ -28,25 +28,13 @@ class PersonRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impl
   private val personTable = TableQuery[PeopleTable]
 
 
-//  val personWithId =  (personTable returning personTable.map(_.id)  into ((person: Person, id) => person.copy(id=id)))
-//
-//  def create(name: String, age: Int) : Future[Person] = {
-//    val action = personWithId += Person(0, name, age)
-//    db.run(action)
-//  }
-
-//  def create(name: String, age: Int): Unit = db.run {
-//    DBIO.seq(personTable +=Person(0,name, age))
-//  }
-
-
-
   def create(name: String, age: Int): Future[Person] = db.run {
     (personTable.map(p => (p.name, p.age))
       returning personTable.map(_.id)
-      into ((nameAge, id) => Person(id, nameAge._1, nameAge._2))
+      into ((fields, id) => Person(id, fields._1, fields._2))
       ) += (name, age)
   }
+
 
   def list(): Future[Seq[Person]] = db.run {
     personTable.result

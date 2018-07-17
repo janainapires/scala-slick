@@ -18,18 +18,18 @@
             @select(
                 field = email("email.situacao"),
                 options = Seq(
-                    "Situacao.PENDENTE" -> "Pendente",
-                    "Situacao.ENVIADO" -> "Enviado",
-                    "Situacao.ERRO" -> "Erro"
+                    "1" -> "Pendente",
+                    "2" -> "Enviado",
+                    "3" -> "Erro"
                 )
             )
             @inputText(email("email.usuariointerno"))
             @select(
                 field = email("email.remetente"),
                 options = Seq(
-                    "Remetente.DIARIOOFICIAL" -> "Diário Oficial",
-                    "Remetente.TRAMITA" -> "Tramita",
-                    "Remetente.ACESSOAINFORMACAO" -> "Acesso a Informação"
+                    "1" -> "Diário Oficial",
+                    "2" -> "Tramita",
+                    "3" -> "Acesso a Informação"
                 )
             )
             @inputText(email("email.tramitavel"))

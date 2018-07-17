@@ -1,7 +1,7 @@
 # --- !Ups
 
 create table people (
-  id bigint NOT NULL,
+  id bigserial NOT NULL,
   name varchar not null,
   age int not null,
   CONSTRAINT people_pkey PRIMARY KEY (id)
@@ -9,7 +9,7 @@ create table people (
 
 CREATE TABLE email
 (
-  id bigint NOT NULL,
+  id bigserial NOT NULL,
   cancelledstatus boolean,
   assunto text,
   conteudo text,
