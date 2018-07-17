@@ -1,6 +1,6 @@
 name = Name
 age = Age
-user.created = You have successfully created a user!
+user.created = Usuario criado com sucesso!
 
 email.conteudo = Conteudo
 email.assunto = Assunto
